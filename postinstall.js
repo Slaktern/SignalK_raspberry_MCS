@@ -117,13 +117,6 @@ WantedBy=multi-user.target\" | tee /etc/systemd/system/mcsowire.service`
     execconfig("systemctl enable mcsowire.service")
   }
 
-
-//install further dependencies: sudo apt-get install python3 idle3 pigpio python-pigpio python3-pigpio
-execconfig(`apt-get install python3 idle3 pigpio python-pigpio python3-pigpio -y`)
-
-// enable pigpio systemctl enable pigpiod && sudo systemctl restart  pigpiod
-execconfig("systemctl enable pigpiod && sudo systemctl restart  pigpiod")
-
 //reboot the Pi if there are no errors
 if (errorinst==false) {
   console.log("no errors or warnings")
