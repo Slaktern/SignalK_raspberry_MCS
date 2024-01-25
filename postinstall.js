@@ -116,20 +116,7 @@ WantedBy=multi-user.target\" | tee /etc/systemd/system/mcsowire.service`
     )
     execconfig("systemctl enable mcsowire.service")
   }
-  //create MCS autoshutdown
-  if (service.includes("mcsasd.service") == false) {
-    execconfig(
-      `echo "[Unit]
-Description=MCS autoshutdown start service
-After=multi-user.target
-[Service]
-Type=simple
-ExecStart=/usr/bin/python3 ${__dirname}/MCS-asd.py
-[Install]
-WantedBy=multi-user.target" | tee /etc/systemd/system/mcsasd.service`
-    )
-    execconfig("systemctl enable mcsasd.service")
-  }
+
 
 //install further dependencies: sudo apt-get install python3 idle3 pigpio python-pigpio python3-pigpio
 execconfig(`apt-get install python3 idle3 pigpio python-pigpio python3-pigpio -y`)
